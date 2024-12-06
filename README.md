@@ -7,3 +7,20 @@
 A template repository for Golang.
 
 To use it, change the module in [go.mod](go.mod) file and update the badges URL to your current project.
+
+```
+encrypt-decrypt/
+├── cmd/
+│   └── main.go          # Arquivo principal para iniciar o servidor
+├── internal/
+│   ├── handler/         # Camada responsável por HTTP (controllers)
+│   │   └── user_handler.go
+│   ├── service/         # Camada de regras de negócio (use cases)
+│   │   └── user_service.go
+│   ├── repository/      # Camada de acesso a dados
+│   │   └── user_repo.go
+│   └── entity/          # Camada de entidades de domínio
+│       └── user.go
+├── go.mod               # Gerenciamento de dependências
+└── go.sum
+```
