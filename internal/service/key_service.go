@@ -1,7 +1,9 @@
 package service
 
 import (
+	"crypto/hmac"
 	"crypto/rand"
+	"crypto/sha256"
 	"encoding/hex"
 	"encrypt-decrypt/internal/repository"
 )
@@ -30,7 +32,9 @@ func (s *keyService) CreateNewKey() error {
 		return err
 	}
 
-	return s.repo.Create(hex.EncodeToString(key))
+	hmacValue := hmac.New(sha256.New, key)
+
+	return s.repo.Create(hex.EncodeToString(hmacValue.Sum(nil)))
 }
 
 func (s *keyService) GetKey() (*string, error) {
