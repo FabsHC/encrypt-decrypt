@@ -22,6 +22,11 @@ A personal study project in Go (v1.23) that demonstrates how to generate and man
 ### 1. `POST /key`
 - **Description**: Generates a new HMAC key and stores it in the database.
 - **Response**: 201 Created
+  ```json
+  {
+  "key": "0766ff57136f0d93328d990d57404b7dfbdac4a5fe350bbf8d3e9f108366599e"
+  }
+  ```
 
 ### 2. `GET /key`
 - **Description**: Retrieves the stored HMAC key.
