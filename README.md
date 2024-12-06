@@ -74,17 +74,21 @@ A personal study project in Go (v1.23) that demonstrates how to generate and man
 ```
 encrypt-decrypt/
 ├── cmd/
-│   └── main.go          # Arquivo principal para iniciar o servidor
+│ └── main.go # Main file to start the server
 ├── internal/
-│   ├── handler/         # Camada responsável por HTTP (controllers)
-│   │   └── user_handler.go
-│   ├── service/         # Camada de regras de negócio (use cases)
-│   │   └── user_service.go
-│   ├── repository/      # Camada de acesso a dados
-│   │   └── user_repo.go
-│   └── entity/          # Camada de entidades de domínio
-│       └── user.go
-├── go.mod               # Gerenciamento de dependências
+│ ├── handler/ # Layer responsible for HTTP (controllers)
+│ │ └── decrypt_handler.go
+│ │ └── encrypt_handler.go
+│ │ └── key_handler.go
+│ ├── service/ # Business logic layer (use cases)
+│ │ └── decrypt_service.go
+│ │ └── encrypt_service.go
+│ │ └── key_service.go
+│ ├── repository/ # Data access layer
+│ │ └── key_repo.go
+│ └── entity/ # Domain entities layer
+│ └── key.go
+├── go.mod # Dependency management
 └── go.sum
 ```
 
