@@ -28,7 +28,7 @@ func (h *EncryptHandler) EncryptData(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.WriteHeader(http.StatusCreated)
-	err = json.NewEncoder(w).Encode(entity.NewResponse(requestBody.Text, *result))
+	err = json.NewEncoder(w).Encode(entity.NewResponse(&requestBody.Text, result))
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}

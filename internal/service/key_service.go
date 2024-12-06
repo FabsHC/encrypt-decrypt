@@ -10,7 +10,7 @@ import (
 
 type (
 	KeyService interface {
-		CreateNewKey() error
+		CreateNewKey() (*string, error)
 		GetKey() (*string, error)
 	}
 
@@ -25,16 +25,23 @@ func NewKeyService(repo repository.KeyRepository) KeyService {
 	}
 }
 
-func (s *keyService) CreateNewKey() error {
+func (s *keyService) CreateNewKey() (*string, error) {
 	key := make([]byte, 32) // 32 bytes para HMAC-SHA256
 	_, err := rand.Read(key)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	hmacValue := hmac.New(sha256.New, key)
 
-	return s.repo.Create(hex.EncodeToString(hmacValue.Sum(nil)))
+	hexHmacValue := hex.EncodeToString(hmacValue.Sum(nil))
+
+	err = s.repo.Create(hexHmacValue)
+	if err != nil {
+		return nil, err
+	}
+
+	return &hexHmacValue, nil
 }
 
 func (s *keyService) GetKey() (*string, error) {

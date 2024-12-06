@@ -1,6 +1,8 @@
 package handler
 
 import (
+	"encoding/json"
+	"encrypt-decrypt/internal/entity"
 	"encrypt-decrypt/internal/service"
 	"net/http"
 )
@@ -14,11 +16,17 @@ func NewKeyHandler(service service.KeyService) *KeyHandler {
 }
 
 func (h *KeyHandler) CreateNewKey(w http.ResponseWriter, r *http.Request) {
-	if err := h.service.CreateNewKey(); err != nil {
+	key, err := h.service.CreateNewKey()
+
+	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 
 	w.WriteHeader(http.StatusCreated)
+	err = json.NewEncoder(w).Encode(entity.NewKeyResponse(key))
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
 }
 
 func (h *KeyHandler) GetKey(w http.ResponseWriter, r *http.Request) {
@@ -28,6 +36,8 @@ func (h *KeyHandler) GetKey(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.WriteHeader(http.StatusOK)
-	w.Header().Set("Content-Type", "application/json")
-	w.Write([]byte(*key))
+	err = json.NewEncoder(w).Encode(entity.NewKeyResponse(key))
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
 }

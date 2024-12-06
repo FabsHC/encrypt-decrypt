@@ -28,7 +28,7 @@ func (h *DecryptHandler) DecryptData(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.WriteHeader(http.StatusCreated)
-	err = json.NewEncoder(w).Encode(entity.NewResponse(*result, requestBody.Text))
+	err = json.NewEncoder(w).Encode(entity.NewResponse(result, &requestBody.Text))
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}

@@ -6,12 +6,19 @@ type (
 	}
 
 	Response struct {
-		TextDecrypted string `json:"text_decrypted"`
-		TextEncrypted string `json:"text_encrypted"`
+		Key           *string `json:"key,omitempty"`
+		TextDecrypted *string `json:"text_decrypted,omitempty"`
+		TextEncrypted *string `json:"text_encrypted,omitempty"`
 	}
 )
 
-func NewResponse(textDecrypted string, textEncrypted string) Response {
+func NewKeyResponse(key *string) *Response {
+	return &Response{
+		Key: key,
+	}
+}
+
+func NewResponse(textDecrypted, textEncrypted *string) Response {
 	return Response{
 		TextDecrypted: textDecrypted,
 		TextEncrypted: textEncrypted,
