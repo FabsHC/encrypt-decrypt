@@ -1,8 +1,8 @@
-# Encrypt-Decrypt
-![go-template-repository](https://img.shields.io/badge/go--template--repository-gray?logo=go)
+# encrypt-decrypt
+![encrypt-decrypt](https://img.shields.io/badge/encrypt--decrypt-gray?logo=go)
 ![technology Go 1.23](https://img.shields.io/badge/technology-go%201.23-blue.svg)
-![Build & Test](https://github.com/FabsHC/go-template-repository/actions/workflows/go-ci.yml/badge.svg)
-[![Go Coverage](https://github.com/FabsHC/go-template-repository/wiki/coverage.svg)](https://raw.githack.com/wiki/FabsHC/go-template-repository/coverage.html)
+![Build & Test](https://github.com/FabsHC/encrypt-decrypt/actions/workflows/go-ci.yml/badge.svg)
+[![Go Coverage](https://github.com/FabsHC/encrypt-decrypt/wiki/coverage.svg)](https://raw.githack.com/wiki/FabsHC/encrypt-decrypt/coverage.html)
 
 A personal study project in Go (v1.23) that demonstrates how to generate and manage HMAC keys, encrypt and decrypt messages using AES-GCM, and store data securely in a lightweight embedded database (`buntdb`).
 
